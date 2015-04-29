@@ -1,0 +1,18 @@
+h3 LIST OF ALBUMS
+
+.row
+  table.table
+    thead
+      tr
+        th Name
+        th Date 
+        th Description
+        th Thumbnail
+        th Delete
+    tbody
+      tr(ng-repeat='album in albums')
+        td: a(ui-sref='albums.show({name:album.$id})') {{album.name}}
+        td {{album.month}}, {{album.year}}
+        td {{album.description}}
+        td: img(ng-src="{{album.thumbnail}}")
+        td: button.btn.btn-warning(ng-click='deleteAlbum(album)'): i.fa.fa-trash-o

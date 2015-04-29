@@ -1,0 +1,14 @@
+h3 {{album.name | uppercase}} ALBUM
+
+.row
+  .col-xs-12
+    form(name='addPhotoForm')
+      label(for='uploadPhoto') Pick a pic 
+      input(type='file' ng-model='imageFile')
+      button.btn.btn-success(ng-click='uploadImage(imageFile)') FTW
+  .col-lg-12.col-md-6.col-sm-4.photoPg(ng-repeat='(key, value) in photos')
+    .row
+      .photodisplay
+        img#albumthumb.thumbnail.image-responsive(ng-src='{{value}}')
+    .row  
+        button.photoPg.btn.btn-danger(ng-click='deletePhoto(key)'): i.fa.fa-trash-o

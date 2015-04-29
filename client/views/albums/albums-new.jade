@@ -1,0 +1,37 @@
+h3 NEW ALBUM
+
+.row
+form-control
+  .col-sm-4
+    .form-group
+      label(for='name') Album Name
+      input.form-control(type='text' name='name' ng-model='album.name' )
+  .col-sm-4
+    p When did you take these photos?
+    .form-group
+      label(for='month') Month
+      select.form-control(name='month' ng-model='album.month')
+        option January
+        option February
+        option March
+        option April
+        option May
+        option June
+        option July
+        option August
+        option September
+        option October
+        option November
+        option December
+    .form-group
+      label(for='year') Year
+      input.form-control(type='number' name='year' ng-model='album.year')
+.row
+  .col-sm-9
+    .form-group
+      label(for='description') Short description
+      input.form-control(type='text' ng-model='album.description') 
+  .col-sm-3
+    .form-group
+      label
+      button.form-control.btn.btn-info(ng-click='addAlbum(album)') Add Album
