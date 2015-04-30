@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('photoalbum')
-.controller('AlbumsShowCtrl', function($state, $scope, Album){
+.controller('AlbumsShowCtrl', function($state, $scope, Album, $rootScope){
   $scope.albumKey = $state.params.name;
   Album.retrieveRecord($scope.albumKey);
+  Album.setFavorite($scope.albumKey);
   console.log($scope.album);
   // $scope.album.$loaded().then(function(){
   //   $scope.photos = $scope.album.photos;
@@ -20,7 +21,8 @@ angular.module('photoalbum')
   };
 
   $scope.setFavorite = function(){
-    Album.setFavorite($scope.favoritePhoto, $scope.albumKey);
+    $rootScope.albumInfo.favorite = $scope.favoritePhoto;
+    Album.saveAlbum();
   };
 
   function previewFile() {

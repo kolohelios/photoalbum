@@ -9,6 +9,9 @@ angular.module('photoalbum')
   var fbAlbums;
   var afAlbums;
 
+  var fbAlbumRec;
+  var afAlbumRec;
+
   function Album(){
 
   }
@@ -39,15 +42,16 @@ angular.module('photoalbum')
     //
   };
 
-  Album.setFavorite = function(favorite, albumKey){
-    var fbFav = $rootScope.fbRoot.child('users/' + $rootScope.activeUser.uid + '/albums/' + albumKey);
-    var afFav = $firebaseArray(fbFav);
-    console.log(afFav);
-    var newObj = angular.copy(afFav);
-    newObj.favorite = favorite;
-    console.log(newObj);
-
+  Album.setFavorite = function(albumKey){
+    fbAlbumRec = $rootScope.fbRoot.child('users/' + $rootScope.activeUser.uid + '/albums/' + albumKey);
+    afAlbumRec = $firebaseObject(fbAlbumRec);
+    console.log(afAlbumRec);
+    $rootScope.albumInfo = afAlbumRec;
   };
+
+  Album.saveAlbum = function(){
+    afAlbumRec.$save();
+  }
 
   Album.addPhoto = function(photoString){
     afAlbums.$add(photoString);
