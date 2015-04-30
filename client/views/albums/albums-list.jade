@@ -14,5 +14,5 @@ h3 LIST OF ALBUMS
         td: a(ui-sref='albums.show({name:albumItem.$id})') {{albumItem.name}}
         td {{albumItem.month}}, {{albumItem.year}}
         td {{albumItem.description}}
-        td: img(ng-src="{{albumItem.thumbnail}}")
+        td: img(ng-src="{{albumItem.favorite}}")
         td: button.btn.btn-warning(ng-click='deleteAlbum($index)'): i.fa.fa-trash-o

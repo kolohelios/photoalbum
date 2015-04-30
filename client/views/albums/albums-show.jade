@@ -9,7 +9,7 @@ h3 {{albumInfo.name | uppercase}} ALBUM
   .col-lg-12.col-md-6.col-sm-4.photoPg(ng-repeat='(key, value) in albums')
     .row
       .photodisplay
-        img#albumthumb.thumbnail.image-responsive(ng-src='{{value.$value}}')  
+        img#albumthumb.thumbnail.image-responsive(ng-src='{{value.$value}}')
     .row
       form(name='setFavoriteForm')
         button.photoPg.btn.btn-danger(ng-click='deletePhoto($index)'): i.fa.fa-trash-o

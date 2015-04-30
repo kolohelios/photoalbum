@@ -21,7 +21,7 @@ angular.module('photoalbum')
   };
 
   $scope.setFavorite = function(){
-    $rootScope.albumInfo.favorite = $scope.favoritePhoto;
+    $rootScope.albumInfo.favorite = $rootScope.albums.$getRecord($scope.favoritePhoto);
     Album.saveAlbum();
   };
 

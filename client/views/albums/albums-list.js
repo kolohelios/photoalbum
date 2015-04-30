@@ -7,7 +7,7 @@ angular.module('photoalbum')
   Album.init();
 
   $scope.deleteAlbum = function(album){
-    $rootScope.albums.$remove(album);
+    $rootScope.album.$remove(album);
   };
 
 });

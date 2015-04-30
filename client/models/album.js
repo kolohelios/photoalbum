@@ -39,7 +39,6 @@ angular.module('photoalbum')
     afAlbums.$loaded().then(function(){
       $rootScope.albums = afAlbums;
     });
-    //
   };
 
   Album.setFavorite = function(albumKey){
@@ -58,12 +57,7 @@ angular.module('photoalbum')
   };
 
   Album.deletePhoto = function(photoIndex){
-    // afAlbums.$loaded().then(function(){
-    //   console.log(afAlbums);
-    //   afAlbums.$remove(photoIndex);
-    // });
     afAlbums.$remove(photoIndex);
-    //console.log(afAlbums.$remove(photoIndex));
   };
 
   return Album;
