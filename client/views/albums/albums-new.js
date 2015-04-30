@@ -6,9 +6,9 @@ angular.module('photoalbum')
   Album.init();
 
   $scope.addAlbum = function(album){
-    console.log('works');
     Album.new(album);
+    $state.go('albums.list');
   };
 
-  
+
 });

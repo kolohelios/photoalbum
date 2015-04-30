@@ -3,12 +3,11 @@
 angular.module('photoalbum')
 .controller('AlbumsShowCtrl', function($state, $scope, Album){
   $scope.albumKey = $state.params.name;
-  $scope.album = Album.retrieveRecord($scope.albumKey);
-  // $scope.album.$watch(function(){
-  //   $scope.album = Album.retrieveRecord($scope.albumKey);
+  Album.retrieveRecord($scope.albumKey);
+  console.log($scope.album);
+  // $scope.album.$loaded().then(function(){
   //   $scope.photos = $scope.album.photos;
   // });
-  $scope.photos = $scope.album.photos;
 
   var tempString;
 
@@ -16,8 +15,12 @@ angular.module('photoalbum')
     previewFile(image);
   };
 
-  $scope.deletePhoto = function(imageKey){
-    Album.deletePhoto(imageKey, $scope.albumKey);
+  $scope.deletePhoto = function(imageIndex){
+    Album.deletePhoto(imageIndex, $scope.albumKey);
+  };
+
+  $scope.setFavorite = function(){
+    Album.setFavorite($scope.favoritePhoto, $scope.albumKey);
   };
 
   function previewFile() {
@@ -36,26 +39,4 @@ angular.module('photoalbum')
       preview.src = '';
     }
   }
-
-
-
-  //
-  // function packageFile(file){
-  //   console.log(file);
-  //   var reader = new FileReader();
-  //   reader.readAsDataURL(file);
-  //   reader.onloadend = function () {
-  //     console.log(reader.result);
-  //     return reader.result;
-  //   };
-  // }
-
-  // function unpackageFile(string){
-  //   var reader = new FileReader();
-  //   var preview = document.querySelector('img');
-  //   preview.src = reader.result;
-  // }
-
-
-
 });

@@ -5,14 +5,14 @@ h3 LIST OF ALBUMS
     thead
       tr
         th Name
-        th Date 
+        th Date
         th Description
         th Thumbnail
         th Delete
     tbody
-      tr(ng-repeat='album in albums')
-        td: a(ui-sref='albums.show({name:album.$id})') {{album.name}}
-        td {{album.month}}, {{album.year}}
-        td {{album.description}}
-        td: img(ng-src="{{album.thumbnail}}")
-        td: button.btn.btn-warning(ng-click='deleteAlbum(album)'): i.fa.fa-trash-o
+      tr(ng-repeat='albumItem in album track by $index')
+        td: a(ui-sref='albums.show({name:albumItem.$id})') {{albumItem.name}}
+        td {{albumItem.month}}, {{albumItem.year}}
+        td {{albumItem.description}}
+        td: img(ng-src="{{albumItem.thumbnail}}")
+        td: button.btn.btn-warning(ng-click='deleteAlbum($index)'): i.fa.fa-trash-o
